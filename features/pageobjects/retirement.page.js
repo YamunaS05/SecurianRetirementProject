@@ -140,9 +140,9 @@ class RetirementPage {
     */
     async selectMaritalStatusOption(status) {
         try {
-            if (status == 'single') {
+            if (status === 'single') {
                 await commonUtils.clickJS(this.singleMartialStatus);
-            } else if(status == 'married') {
+            } else if(status === 'married') {
                 await commonUtils.clickJS(this.marriedMartialStatus);
             } else {
                 throw new Error('Unknown marital status: ${status}');
@@ -158,9 +158,9 @@ class RetirementPage {
     */
     async selectSocialSecurityOption(option) {
         try {
-            if (option == 'yes') {
+            if (option === 'yes') {
                 await commonUtils.clickJS(this.yesSocialSecurity);
-            } else if(option == 'no') {
+            } else if(option === 'no') {
                 await commonUtils.clickJS(this.noSocialSecurity);
             } else {
                 throw new Error('Unknown social security field ${status}');
