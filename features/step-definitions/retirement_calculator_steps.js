@@ -6,7 +6,7 @@ const retirementPage = require('../pageobjects/retirement.page');
 
 
 
-Given(/^User is on retirement calculator page$/, async () => {
+Given(/^User is on securian pre-retirement calculator page$/, async () => {
     await retirementPage.openPageUrl();
 });
 
@@ -29,7 +29,7 @@ Then(/^user should "([^"]*)" social security fields as visible$/, async function
     await retirementPage.assertYesNoSocialSecurity(string);
 });
 
-Then(/^user should able to see my retirement amount filling "([^"]*)" fields.$/, async function(string){
+Then(/^user should able to see my retirement amount "([^"]*)" fields$/, async function(string){
     await retirementPage.assertRetirementAmount(string);
 });
 

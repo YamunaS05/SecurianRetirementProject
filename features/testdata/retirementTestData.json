@@ -1,5 +1,5 @@
 {
-    "allEmpty": {
+    "all empty": {
         "currentAge" : "",
         "retirementAge" : "",
         "yourAnnualIncome" : "",
@@ -53,31 +53,31 @@
     "required": {
         "currentAge" : "40",
         "retirementAge" : "68",
-        "yourAnnualIncome" : "100000",
-        "currentTotalSavings" : "500000",
-        "annualSavings" : "10",
-        "savingsIncreaseRate" : "2",
-        "successMessage" : "Congratulations! You are exceeding your retirement goals. You are saving an extra $833 a month."
+        "yourAnnualIncome" : "2000",
+        "currentTotalSavings" : "30000",
+        "annualSavings" : "5",
+        "savingsIncreaseRate" : "5",
+        "successMessage" : "Congratulations! You are exceeding your retirement goals. You are saving an extra $8 a month."
     },
     "all": {
         "currentAge" : "40",
         "retirementAge" : "68",
-        "yourAnnualIncome" : "100000",
-        "spouseIncome" : "75000",
-        "currentTotalSavings" : "500000",
-        "annualSavings" : "10",
+        "yourAnnualIncome" : "2000",
+        "spouseIncome" : "3000",
+        "currentTotalSavings" : "30000",
+        "annualSavings" : "5",
         "socialSecurityOption": "yes",
-        "savingsIncreaseRate" : "2",
+        "savingsIncreaseRate" : "5",
         "maritalStatus": "married",
         "overrideAmount": "800000",
-        "successMessage" : "Congratulations! You are exceeding your retirement goals. You are saving an extra $833 a month."
+        "successMessage" : "Congratulations! You are exceeding your retirement goals. You are saving an extra $8 a month."
     },
     "default": {
         "additionalIncome" : "10000",
         "retirementDuration" : "20",
-        "retirementAnnualIncome" : "100",
-        "preRetirementROI" : "7500",
-        "postRetirementROI" : "9000"
+        "retirementAnnualIncome" : "10",
+        "preRetirementROI" : "5",
+        "postRetirementROI" : "5"
     }
 
 

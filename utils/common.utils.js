@@ -1,29 +1,52 @@
 const { $ } = require('@wdio/globals')
 const logger = require('../utils/log.utils')
+const TIMEOUTS = require('../utils/timeout.utils')
 
 class PageUtils{
     
     async setValue(element, value) {
-        await element.waitForDisplayed({timeout: 10000});
-        await element.waitForClickable({timeout: 10000});
+        try {
+        await element.waitForDisplayed({timeout : TIMEOUTS.MEDIUM});
+        await element.waitForClickable({timeout : TIMEOUTS.MEDIUM});
         await element.click();
         await element.setValue(value);
+        }
+        catch (error){
+            logger.error('Failed to set value to the Webelement' + error);
+        }
     }
 
     async click(element){
-        await element.waitForDisplayed({timeout: 10000});
-        await element.waitForClickable({timeout: 10000});
+        try {
+        await element.waitForDisplayed({timeout : TIMEOUTS.LONG});
+        await element.waitForClickable({timeout: TIMEOUTS.LONG});
         await element.click();
+    }
+    catch (error){
+        logger.error('Failed to click the Webelement' + element);
+    }
     }
 
     async clickJS(element){
-        await element.waitForDisplayed({timeout: 5000 });
+        try {
+        await element.waitForDisplayed({timeout: TIMEOUTS.MEDIUM });
         await browser.execute((e1) => e1.click(), await element);
+    }
+    catch (error){
+        console.log("Error");
+        logger.error('Failed to click the Webelement' + element);
+    }
     }
 
     async getText(element){
-        await element.waitForDisplayed({timeout: 5000});
+        try {
+        await element.waitForDisplayed({timeout: TIMEOUTS.MEDIUM});
         return await element.getText();
+    }
+    catch (error){
+        console.log("Error");
+        logger.error('Failed to get text for the Webelement' + element);
+    }
     }
     
 }

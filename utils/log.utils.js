@@ -16,6 +16,10 @@ class LogUtils{
     info(message){
         logger.info(message);
     }
+
+    error(message){
+      logger.error(message);
+  }
 }
 
 module.exports = new LogUtils();

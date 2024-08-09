@@ -1,5 +1,5 @@
 const { $ } = require('@wdio/globals')
-const BasePage = require('../../utils/base.page.js');
+const basePage = require('../../utils/base.page.js');
 const retirementTestData  = require('../testdata/retirementTestData.json');
 const commonUtils = require('../../utils/common.utils.js');
 const logger = require('../../utils/log.utils')
@@ -7,7 +7,7 @@ const logger = require('../../utils/log.utils')
 /**
  * sub page containing specific selectors and methods for a specific page
  */
-class RetirementPage extends BasePage{
+class RetirementPage {
     /**
      * define selectors using getter methods
      */
@@ -226,6 +226,8 @@ class RetirementPage extends BasePage{
          */
     async enterDefaultValues(string){
         try {
+            console.log("default values")
+            console.log(string)
             logger.info('Entering the default calculator values');
         const testDataobject = retirementTestData[string];
         await commonUtils.click(this.adjustDefaultValues);
@@ -246,7 +248,7 @@ class RetirementPage extends BasePage{
          */
     async enterUserDetails(string){
         try {
-            logger.info('Entering the User Details fields');
+            logger.info('Entering User Details fields');
         const testDataobject = retirementTestData[string];
         await commonUtils.setValue(this.currentAgeInput, testDataobject.currentAge)
         await commonUtils.setValue(this.retirementAgeInput, testDataobject.retirementAge)
@@ -254,12 +256,14 @@ class RetirementPage extends BasePage{
         await commonUtils.setValue(this.currentTotalSavingsInput, testDataobject.currentTotalSavings)
         await commonUtils.setValue(this.currentAnnualSavingsInput, testDataobject.annualSavings)
         await commonUtils.setValue(this.savingIncreaseRateInput, testDataobject.savingsIncreaseRate)
-        if (string == "all"){
+        logger.info('Successfully entered the user details');
+        if (string === "all"){
             await commonUtils.setValue(this.spouseAnnualIncomeInput, testDataobject.spouseIncome)
             this.selectSocialSecurityOption(testDataobject.socialSecurityOption)
             this.selectMaritalStatusOption(testDataobject.maritalStatus)
+            logger.info('Successfully entered all user details');
         }
-        logger.info('Entered the user details fields');
+        
     } catch (error){
         logger.error('Failed to enter user details fields ' + error);
     }
@@ -272,26 +276,27 @@ class RetirementPage extends BasePage{
         try {
         await commonUtils.click(this.submitRetirement);  
         const testDataobject = retirementTestData[string];
-        if (string == "allEmpty") {
+        if (string === "allEmpty") {
         await expect(this.requiredFieldAlert).toHaveText(testDataobject.errorMessage);
         await expect(this.ageErrorLabel).toHaveText(testDataobject.ageErrorLabel);
         await expect(this.retirementAgeErrorLabel).toHaveText(testDataobject.retireAgeErrorLabel);
         await expect(this.currentIncomeErrorLabel).toHaveText(testDataobject.currentIncomeErrorLabel);
         await expect(this.currentSavingErrorLabel).toHaveText(testDataobject.currentSavingErrorLabel);
-        } else if (string == "invalid age") {
+        } else if (string === "invalid age") {
             await expect(this.invalidRetirementAge).toHaveText(testDataobject.invalidRetirementAgeErrorMessage);
             await expect(this.invalidCurrentAge).toHaveText(testDataobject.invalidAgeErrorMessage);
             await expect(this.requiredFieldAlert).toHaveText(testDataobject.errorMessage);
-        } else if (string == "age greater than retirement age") {
+        } else if (string === "age greater than retirement age") {
             await expect(this.invalidRetirementAge).toHaveText(testDataobject.invalidRetirementAgeErrorMessage);
             await expect(this.requiredFieldAlert).toHaveText(testDataobject.errorMessage);
-        } else if (string == "age greater than 120") {
+        } else if (string === "age greater than 120") {
             await expect(this.invalidCurrentAge).toHaveText(testDataobject.invalidAgeErrorMessage);
             await expect(this.requiredFieldAlert).toHaveText(testDataobject.errorMessage);
         }
-        logger.info('Validated the error message');
+        logger.info('Successfully verified the error message');
     } catch (error){
-        logger.error('Failed to validate the error message ' + error);
+        console.log("Error");
+        logger.error('Failed to verify the error message ' + error);
     }
     }
 
@@ -299,8 +304,8 @@ class RetirementPage extends BasePage{
          * method for open the page url
          */
     async openPageUrl () {
-        logger.info('URL launched');
-        super.openPage();
+        logger.info('Successfully URL launched');
+        basePage.openPage();
         
     }
 
@@ -309,11 +314,11 @@ class RetirementPage extends BasePage{
          */
 async assertYesNoSocialSecurity(optionSocialSecurity){
     try {
-    if (optionSocialSecurity == "see") {
+    if (optionSocialSecurity === "see") {
         await expect(this.martialStatusToggle).toBeDisplayed()
         await expect(this.overrideSocialSecurity).toBeDisplayed()
         logger.info('Marital Status and Override text field is Displayed');
-    } else if (optionSocialSecurity == "not see"){
+    } else if (optionSocialSecurity === "not see"){
         await expect(this.martialStatusToggle).not.toBeDisplayed()
         await expect(this.overrideSocialSecurity).not.toBeDisplayed()
         logger.info('Marital Status and Override text field should not be Displayed');
@@ -330,14 +335,14 @@ async assertRetirementAmount(string){
     try {
     await commonUtils.click(this.submitRetirement);
     const testDataobject = retirementTestData[string];
-    if (string == "required") {
+    if (string === "required") {
         await expect(this.successResultMessage).toHaveText(testDataobject.successMessage);
-    } else if (string == "all"){
+    } else if (string === "all"){
         await expect(this.successResultMessage).toHaveText(testDataobject.successMessage);
     }
     await expect(this.successResultChart).toBeDisplayed()
     await expect(this.monthlySavingsResultsTable).toBeDisplayed()
-    logger.info('Assertion of Retirement Amount was successful');
+    logger.info('Successfully verified the retirement saving amount');
 } catch (error){
     logger.error('Failed to assert the retirement amount ' + error);
 }

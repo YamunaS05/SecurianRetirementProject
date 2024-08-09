@@ -6,4 +6,4 @@ class BasePage {
     }
 }
 
-module.exports = BasePage;
+module.exports = new BasePage();

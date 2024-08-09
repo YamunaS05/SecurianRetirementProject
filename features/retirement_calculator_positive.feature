@@ -1,9 +1,9 @@
 Feature: Positive Scenario for pre-retirement calculator.
 
   Background:
-    Given User is on retirement calculator page
+    Given User is on securian pre-retirement calculator page
 
-  Scenario: User selecting Social Security as yes option
+Scenario: User selecting Social Security as yes option
     When user selects social security field as "yes" on preretirement calculator
     Then user should "see" social security fields as visible
 
@@ -11,13 +11,15 @@ Feature: Positive Scenario for pre-retirement calculator.
     When user selects social security field as "no" on preretirement calculator
     Then user should "not see" social security fields as visible
 
-  Scenario: user entering required fields in pre retirement calculator
-    When user should fill "required" fields on pre-retirement calculator page
-    Then user should able to see my retirement amount filling "required" fields.
+ Scenario Outline: user entering required and all fields on pre-retirement calculator page
+    When user should fill "<requiredAll>" fields on pre-retirement calculator page
+    Then user should able to see my retirement amount "<requiredAll>" fields
 
-  Scenario: user entering all fields in pre retirement calculator
-    When user should fill "all" fields on pre-retirement calculator page
-    Then user should able to see my retirement amount filling "all" fields.
+     Examples:
+      | requiredAll  |
+      | required    |
+      |all|
 
-  Scenario: User selecting Social Security as yes option
-  Then user modifies the "default" calculator values  on Preretirement calculator
+ Scenario: user entering the default assumption values on pre-retirement calculator
+ When user should fill "required" fields on pre-retirement calculator page
+ Then user modifies the "default" calculator values  on Preretirement calculator
