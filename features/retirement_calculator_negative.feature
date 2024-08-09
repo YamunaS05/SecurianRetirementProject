@@ -1,16 +1,17 @@
-Feature: Negative Scenario for pre-retirement calculator.
+Feature: Calculate retirement savings using securian pre-retirement calculator for nagative scenario
 
   Background:
     Given User is on securian pre-retirement calculator page
 
-  Scenario Outline: user checking the error message for preretirement calculator with different invalid sets of data
-    When user should fill "<invalidSetDATA>" fields on pre-retirement calculator page
-    Then user should see error message for "<invalidSetDATA>" fields
+  Scenario Outline: user checking the error message for pre-retirement calculator with different set of invalid sets data
+  
+    When user should fill "<invalidsetdata>" fields on pre-retirement calculator page
+    And user submits the pre-retirement calculator form
+    Then user should see error message for "<invalidsetdata>" fields
 
-      Examples:
-      | invalidSetDATA  |
-      | all empty    |
-      |invalid age|
-      | age greater than retirement age    |
-      |age greater than 120|
-
+    Examples:
+      | invalidsetdata                  |
+      | all empty                       |
+      | invalid age                     |
+      | age greater than retirement age |
+      | age greater than 120            |

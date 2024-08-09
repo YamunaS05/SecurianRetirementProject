@@ -4,6 +4,9 @@ const TIMEOUTS = require('../utils/timeout.utils')
 
 class PageUtils{
     
+    /**
+    * Sets the value o a specified input field.
+    */
     async setValue(element, value) {
         try {
         await element.waitForDisplayed({timeout : TIMEOUTS.MEDIUM});
@@ -16,6 +19,9 @@ class PageUtils{
         }
     }
 
+    /**
+    * Clicks on a specified element.
+    */
     async click(element){
         try {
         await element.waitForDisplayed({timeout : TIMEOUTS.LONG});
@@ -27,6 +33,9 @@ class PageUtils{
     }
     }
 
+    /**
+    * Clicks on a specified element using javascript.
+    */
     async clickJS(element){
         try {
         await element.waitForDisplayed({timeout: TIMEOUTS.MEDIUM });
@@ -38,6 +47,9 @@ class PageUtils{
     }
     }
 
+    /**
+    * Retrieves the text of a specified element.
+    */
     async getText(element){
         try {
         await element.waitForDisplayed({timeout: TIMEOUTS.MEDIUM});

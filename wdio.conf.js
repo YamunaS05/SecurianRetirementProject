@@ -23,7 +23,7 @@ exports.config = {
     //
     specs: [
        // './features/**/*.feature'
-       './features/**/retirement_calculator_negative.feature',
+      './features/**/retirement_calculator_negative.feature',
        './features/**/retirement_calculator_positive.feature'
     ],
     // Patterns to exclude.

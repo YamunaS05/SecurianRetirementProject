@@ -1,3 +1,6 @@
+/**
+* Creates milliseconds timeout for the wait
+*/
 const TIMEOUTS = {
     SHORT : 5000,
     MEDUIUM : 10000,
